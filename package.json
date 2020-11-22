@@ -1,0 +1,33 @@
+{
+  "name": "dbgate-plugin-excel",
+  "main": "lib/backend.js",
+  "version": "1.0.3",
+  "homepage": "https://github.com/dbshell/dbgate-plugin-csv",
+  "description": "CSV import/export plugin for DbGate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbshell/dbgate-plugin-csv.git"
+  },
+  "funding": "https://www.paypal.com/paypalme/JanProchazkaCz/30eur",
+  "author": "Jan Prochazka",
+  "license": "GPL",
+  "keywords": [
+    "sql",
+    "csv",
+    "import",
+    "export",
+    "dbgate",
+    "dbgateplugin"
+  ],
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "cd frontend && yarn build && cd ../backend && yarn build",
+    "lnd": "ln -s ~/jenasoft/dbgate-plugin-excel ~/dbgate-data/plugins/dbgate-plugin-excel"
+  },
+  "devDependencies": {
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
