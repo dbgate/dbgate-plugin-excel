@@ -2,11 +2,11 @@
   "name": "dbgate-plugin-excel",
   "main": "lib/backend.js",
   "version": "1.0.3",
-  "homepage": "https://github.com/dbshell/dbgate-plugin-csv",
-  "description": "CSV import/export plugin for DbGate",
+  "homepage": "https://github.com/dbshell/dbgate-plugin-excel",
+  "description": "MS Excel import/export plugin for DbGate",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dbshell/dbgate-plugin-csv.git"
+    "url": "https://github.com/dbshell/dbgate-plugin-excel.git"
   },
   "funding": "https://www.paypal.com/paypalme/JanProchazkaCz/30eur",
   "author": "Jan Prochazka",
