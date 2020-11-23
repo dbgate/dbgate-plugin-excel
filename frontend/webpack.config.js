@@ -12,11 +12,12 @@ var config = {
     path: path.resolve(__dirname, "..", "lib"),
     filename: "frontend.js",
     libraryTarget: "var",
+    library: 'plugin',
   },
 
-  optimization: {
-    minimize: false,
-  },
+  // optimization: {
+  //   minimize: false,
+  // },
 };
 
 module.exports = config;
