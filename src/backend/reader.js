@@ -13,7 +13,7 @@ async function loadWorkbook(fileName) {
   return workbook;
 }
 
-async function excelSheetReader({ fileName, sheetName, limitRows = undefined }) {
+async function reader({ fileName, sheetName, limitRows = undefined }) {
   const workbook = await loadWorkbook(fileName);
   const sheet = workbook.Sheets[sheetName];
 
@@ -38,4 +38,4 @@ async function excelSheetReader({ fileName, sheetName, limitRows = undefined }) 
   return pass;
 }
 
-module.exports = excelSheetReader;
+module.exports = reader;

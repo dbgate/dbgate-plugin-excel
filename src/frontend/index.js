@@ -4,12 +4,18 @@ function initialize(dbgateEnv) {
   axios = dbgateEnv.axios;
 }
 
-const excelFormat = {
+const fileFormat = {
+  packageName: 'dbgate-plugin-excel',
+  // file format identifier
   storageType: 'excel',
+  // file extension without leading dot
   extension: 'xlsx',
+  // human readable file format name
   name: 'MS Excel',
-  readerFunc: 'excelSheetReader@dbgate-plugin-excel',
-  writerFunc: 'excelSheetWriter@dbgate-plugin-excel',
+  // function name from backend, which contains reader factory, postfixed by package name
+  readerFunc: 'reader@dbgate-plugin-excel',
+  // function name from backend, which contains writer factory, postfixed by package name
+  writerFunc: 'writer@dbgate-plugin-excel',
 
   addFilesToSourceList: async (file, newSources, newValues) => {
     const resp = await axios.post('plugins/command', {
@@ -57,6 +63,6 @@ const excelFormat = {
 };
 
 export default {
-  fileFormats: [excelFormat],
+  fileFormats: [fileFormat],
   initialize,
 };

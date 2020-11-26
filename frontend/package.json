@@ -1,8 +1,0 @@
-{
-  "name": "dbgate-plugin-csv-frontend",
-  "private": true,
-  "scripts": {
-    "build": "webpack"
-  },
-  "devDependencies": {}
-}

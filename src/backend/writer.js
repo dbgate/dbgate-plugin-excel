@@ -43,15 +43,15 @@ class ExcelSheetWriterStream extends stream.Writable {
   }
 }
 
-async function excelSheetWriter({ fileName, sheetName }) {
+async function writer({ fileName, sheetName }) {
   return new ExcelSheetWriterStream({
     fileName,
     sheetName,
   });
 }
 
-excelSheetWriter.initialize = ({dbgateApi}) => {
+writer.initialize = ({ dbgateApi }) => {
   dbgateApi.finalizer.register(saveExcelFiles);
 };
 
-module.exports = excelSheetWriter;
+module.exports = writer;
