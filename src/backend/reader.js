@@ -3,12 +3,14 @@ const stream = require('stream');
 const _ = require('lodash');
 
 const loadedWorkbooks = {};
+let dbgateApi;
 
 async function loadWorkbook(fileName) {
   let workbook = loadedWorkbooks[fileName];
   if (workbook) return workbook;
   console.log(`Loading excel ${fileName}`);
-  workbook = xlsx.readFile(fileName);
+  const downloadedFile = await dbgateApi.download(fileName);
+  workbook = xlsx.readFile(downloadedFile);
   loadedWorkbooks[fileName] = workbook;
   return workbook;
 }
@@ -37,5 +39,9 @@ async function reader({ fileName, sheetName, limitRows = undefined }) {
 
   return pass;
 }
+
+reader.initialize = (dbgateEnv) => {
+  dbgateApi = dbgateEnv.dbgateApi;
+};
 
 module.exports = reader;

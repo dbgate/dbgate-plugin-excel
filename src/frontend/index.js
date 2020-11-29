@@ -17,19 +17,19 @@ const fileFormat = {
   // function name from backend, which contains writer factory, postfixed by package name
   writerFunc: 'writer@dbgate-plugin-excel',
 
-  addFilesToSourceList: async (file, newSources, newValues) => {
+  addFileToSourceList: async ({ fileName }, newSources, newValues) => {
     const resp = await axios.post('plugins/command', {
       command: 'analyse',
       packageName: 'dbgate-plugin-excel',
       args: {
-        filePath: file.full,
+        fileName,
       },
     });
     const sheetNames = resp.data;
     for (const sheetName of sheetNames) {
       newSources.push(sheetName);
       newValues[`sourceFile_${sheetName}`] = {
-        fileName: file.full,
+        fileName,
         sheetName,
       };
     }
