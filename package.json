@@ -1,7 +1,7 @@
 {
   "name": "dbgate-plugin-excel",
   "main": "dist/backend.js",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "homepage": "https://github.com/dbgate/dbgate-plugin-excel",
   "description": "MS Excel import/export plugin for DbGate",
   "repository": {
