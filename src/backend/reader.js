@@ -16,7 +16,7 @@ async function loadWorkbook(fileName) {
 }
 
 async function waitForDrain(stream) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     stream.once('drain', () => {
       resolve();
     });
@@ -26,17 +26,19 @@ async function waitForDrain(stream) {
 async function reader({ fileName, sheetName, limitRows = undefined }) {
   const pass = new stream.PassThrough({
     objectMode: true,
-    highWaterMark: 100
+    highWaterMark: 100,
   });
 
   const workbook = await loadWorkbook(fileName);
   const sheet = workbook.Sheets[sheetName];
 
   const rows = xlsx.utils.sheet_to_json(sheet, {
-    header: 1, blankrows: false
+    header: 1,
+    blankrows: false,
   });
   const header = rows[0];
   const structure = {
+    __isStreamHeader: true,
     columns: _.range(header.length).map((index) => ({ columnName: header[index] })),
   };
   if (!pass.write(structure)) await waitForDrain(pass);
@@ -50,7 +52,7 @@ async function reader({ fileName, sheetName, limitRows = undefined }) {
       if (!pass.write(rowData)) await waitForDrain(pass);
     }
     pass.end();
-  }
+  };
 
   // don't wait for sending
   sendAsync();
